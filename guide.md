@@ -7,7 +7,7 @@ CONTENTS
  - Implement Change Request (new branch, copy database, generate scripts...)
  - Build sources
  - Deploy (dev, test, prod)
- - Naming Convention
+ - [Naming Convention](#naming-convention)
  - [Rest API Design](#rest-api-design)
 
  Development Environment Setup (runtime, IDE, DB installation, SourceControl installation)
@@ -35,8 +35,8 @@ Build sources
 Deploy (dev, test, prod)
 ------------------------
 
-Naming Convention
------------------
+#Naming Convention
+
 - Repository (DAO) layer
   * For interfaces use names like **(Entity)Repository** - e.g. **UserRepository**, **CustomerRepository**
   * For implementations use the technology name before the interface name **(Technology)(Entity)Repository** - e.g. **JdbcUserRepository**, **JpaCustomerRepository**, **FileSystemCustomerRepository**
