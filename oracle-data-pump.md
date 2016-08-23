@@ -1,5 +1,6 @@
 # check DATA_PUMP_DIR
 select * from dba_directories where DIRECTORY_NAME = 'DATA_PUMP_DIR';
+
 create or replace directory data_pump_dir as 'D:\orabcp';
 
 grant read,write on directory DATA_PUMP_DIR to \<user\>;
