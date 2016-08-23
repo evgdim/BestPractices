@@ -8,7 +8,7 @@ CONTENTS
  - Build sources
  - Deploy (dev, test, prod)
  - Naming Convention
- - [Rest API Design](#Rest API Design)
+ - [Rest API Design](#rest-api-design)
 
  Development Environment Setup (runtime, IDE, DB installation, SourceControl installation)
 -----------------------------------------------------------------------------------------
