@@ -5,7 +5,7 @@
 
 ```create or replace directory data_pump_dir as 'D:\orabcp';```
 
-```grant read,write on directory DATA_PUMP_DIR to \<user\>;```
+```grant read,write on directory DATA_PUMP_DIR to <user>;```
 
 **export**
 
