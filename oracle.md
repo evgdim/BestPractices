@@ -17,3 +17,14 @@
 
 #Clear schema
 ```select 'drop '||object_type||' '|| object_name||';' from user_objects;```
+
+#Regex split
+```
+  with test as 
+  (
+    select 'ABC;DEF;GHI;JKL;MNO' str from dual  
+  )  
+  select regexp_substr (str, '[^;]+', 1, rownum) split  
+  from test  
+  connect by level <= length (regexp_replace (str, '[^;]+'))  + 1;
+```
