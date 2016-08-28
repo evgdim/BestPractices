@@ -13,3 +13,36 @@ END CATCH
 
 IF @@TRANCOUNT > 0 COMMIT TRANSACTION;
 ```
+
+# Cursor template
+```
+DECLARE 
+	@id bigint,
+	@str varchar;
+DECLARE MyCursor CURSOR FORWARD_ONLY
+FOR
+select Id, Str
+  from <table>;
+
+BEGIN TRANSACTION
+BEGIN TRY
+	OPEN MyCursor
+	FETCH NEXT FROM MyCursor INTO @id, @str 
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		print 'put statements here';
+
+		FETCH NEXT FROM MyCursor INTO @id, @str
+	END
+END TRY
+BEGIN CATCH
+	SELECT ERROR_NUMBER() AS ErrorNumber,ERROR_SEVERITY() AS ErrorSeverity,ERROR_STATE() AS ErrorState
+			,ERROR_PROCEDURE() AS ErrorProcedure,ERROR_LINE() AS ErrorLine,ERROR_MESSAGE() AS ErrorMessage;
+	IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION;
+END CATCH
+
+IF @@TRANCOUNT > 0 COMMIT TRANSACTION;
+
+CLOSE MyCursor
+DEALLOCATE MyCursor
+```
