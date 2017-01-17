@@ -28,3 +28,19 @@
   from test  
   connect by level <= length (regexp_replace (str, '[^;]+'))  + 1;
 ```
+#Create tablespace and user/schema
+```
+CREATE BIGFILE TABLESPACE myuser_ts
+  DATAFILE 'myuser_ts.dat'
+  SIZE 20M AUTOEXTEND ON;
+
+CREATE USER myuser IDENTIFIED BY myuser;
+GRANT CONNECT TO myuser;
+GRANT RESOURCE TO myuser;
+
+ALTER USER myuser QUOTA UNLIMITED ON myuser_ts;
+
+--revert
+drop user myuser cascade;
+drop tablespace myuser_ts including contents and datafiles;
+```
