@@ -69,8 +69,8 @@ BEGIN
         WHEN 'VARCHAR2' THEN 'String'
         WHEN 'NUMBER' THEN 'BigDecimal'
         WHEN 'INT' THEN 'Integer'
-        WHEN 'DATE' THEN 'java.sql.Timestamp'
-        WHEN 'TIMESTAMP' THEN 'java.sql.Timestamp'
+        WHEN 'DATE' THEN 'Timestamp'
+        WHEN 'TIMESTAMP' THEN 'Timestamp'
         ELSE '<Unknown>'
       END;
       JAVA_PROP_NAME := replace(initcap(c.COLUMN_NAME),'_');
@@ -78,21 +78,21 @@ BEGIN
       ROWMAPPER_STR_TMP := ROWMAPPER_STR_TMP || '      ' ||
         lower(JAVA_CLASS_NAME) || '.set' || initcap(JAVA_PROP_NAME) || '(rs.get' || JAVA_DATA_TYPE || '("'||c.COLUMN_NAME||'"));' || NL;
     END LOOP;
-   END LOOP;
-   CLASS_STR_TMP := CLASS_STR_TMP || NL || '}';
-   ROWMAPPER_STR_TMP := ROWMAPPER_STR_TMP || '      return ' || lower(JAVA_CLASS_NAME) || ';' || NL ||
+    CLASS_STR_TMP := CLASS_STR_TMP || NL || '}';
+    ROWMAPPER_STR_TMP := ROWMAPPER_STR_TMP || '      return ' || lower(JAVA_CLASS_NAME) || ';' || NL ||
       '   }' || NL ||
     '}';
     
-   dbms_output.put_line('===================================');
-   dbms_output.put_line(CLASS_STR_TMP);
-   dbms_output.put_line('');
-   dbms_output.put_line('...................................');
-   dbms_output.put_line('');
-   dbms_output.put_line(ROWMAPPER_STR_TMP);
-   dbms_output.put_line('===================================');
-   CLASS_STR_TMP := '';
-   ROWMAPPER_STR_TMP := '';
+     dbms_output.put_line('===================================');
+     dbms_output.put_line(CLASS_STR_TMP);
+     dbms_output.put_line('');
+     dbms_output.put_line('...................................');
+     dbms_output.put_line('');
+     dbms_output.put_line(ROWMAPPER_STR_TMP);
+     dbms_output.put_line('===================================');
+     CLASS_STR_TMP := '';
+     ROWMAPPER_STR_TMP := '';
+   END LOOP;  
 EXCEPTION
    WHEN others THEN
       dbms_output.put_line('asd');
