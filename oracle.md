@@ -34,6 +34,8 @@ CREATE BIGFILE TABLESPACE myuser_ts
   DATAFILE 'myuser_ts.dat'
   SIZE 20M AUTOEXTEND ON;
 
+alter session set "_ORACLE_SCRIPT"=true; -- only for 12c if you want to create common user without c## prefix
+
 CREATE USER myuser IDENTIFIED BY myuser
 DEFAULT TABLESPACE myuser_ts;
 
