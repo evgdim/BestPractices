@@ -1,4 +1,4 @@
-#Data pump
+# Data pump
 **check DATA_PUMP_DIR**
 
 ```select * from dba_directories where DIRECTORY_NAME = 'DATA_PUMP_DIR';```
@@ -28,7 +28,7 @@
   from test  
   connect by level <= length (regexp_replace (str, '[^;]+'))  + 1;
 ```
-#Create tablespace and user/schema
+# Create tablespace and user/schema
 ```
 CREATE BIGFILE TABLESPACE myuser_ts
   DATAFILE 'myuser_ts.dat'
@@ -48,7 +48,7 @@ ALTER USER myuser QUOTA UNLIMITED ON myuser_ts;
 drop user myuser cascade;
 drop tablespace myuser_ts including contents and datafiles;
 ```
-#Generate Java class and Spring row mapper from trables
+# Generate Java class and Spring row mapper from trables
 
 ```
 DECLARE
