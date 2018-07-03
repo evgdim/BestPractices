@@ -118,7 +118,7 @@ and r_constraint_name in
 order by table_name, constraint_name
 ```
 
-#Find unindexed FKs
+# Find unindexed FKs
 ```
 select
 case
